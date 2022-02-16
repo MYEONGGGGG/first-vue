@@ -3,11 +3,30 @@
   <head>
     <meta charset="utf-8">
     <title>vue-todo</title>
-    <!-- 뷰포트 메타 태그 -->
+    <!-- 뷰포트 메타 태그, 반응형 웹 설정 -->
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- 파비콘 생성
+         url: https://www.favicon-generator.org/
+         이용한 파일 경로: ./assets/logo/png
+     -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+    <!-- awesome icon -->
+    <!-- load all Font Awesome styles -->
+    <!-- 파일 불러온 후 적용 -->
+    <link rel="stylesheet" href="src/assets/fontawesome/css/all.css">
+    <!-- url 로 추가 -->
+<!--    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.0.0/css/all.css">-->
   </head>
   <body>
     <div id="app"></div>
     <script src="/dist/build.js"></script>
+
+<!-- fontawesome 테스트 -->
+<!--    <i class="fa-solid fa-user"></i>-->
+<!--    <i class="fa-brands fa-github-square"></i>-->
+
   </body>
 </html>
