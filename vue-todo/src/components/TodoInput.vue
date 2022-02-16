@@ -18,14 +18,19 @@ export default {
   },
   methods: {
     addTodo: function () {
-      var obj = {component: false, item: this.newTodoItem};
+      // 값이 존재할 경우
+      if (this.newTodoItem !== '') {
+        var obj = {completed: false, item: this.newTodoItem};
 
-      // 저장하는 로직
-      localStorage.setItem(this.newTodoItem, this.newTodoItem);
-      this.clearInput();
+        // 저장하는 로직
+        // localStorage.setItem(this.newTodoItem, obj); // key: 입력값, value: [Object Object]
+         localStorage.setItem(this.newTodoItem, JSON.stringify(obj)); // key: 입력값, value: {component: false item: 입력값}
+
+        // 초기화
+        this.clearInput();
+      }
     },
     clearInput: function () {
-      // 초기화
       this.newTodoItem = '';
     }
   }

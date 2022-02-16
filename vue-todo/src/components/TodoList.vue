@@ -2,10 +2,15 @@
   <div>
     <ul>
 <!--  리스트 출력-->
-      <li v-for="(todoItem, index) in todoItems" v-bind:key="todoItem" class="shadow"> <!-- shadow: App.vue 의 style class -->
-        <i class="checkBtn fas fa-check" v-on:click="toggleComplete"></i>
+      <li v-for="(todoItem, index) in todoItems" v-bind:key="todoItem.item" class="shadow"> <!-- shadow: App.vue 의 style class -->
+        <i class="checkBtn fas fa-check"
+           v-bind:class="{checkBtnCompleted: todoItem.completed}"
+           v-on:click="toggleComplete(todoItem, index)"></i>
 
-        {{ todoItem }}
+        <!-- 보여지는 value 값 -->
+        <span v-bind:class="{textCompleted: todoItem.completed}">
+        <!-- 789 --> {{ todoItem.item }} </span>
+        <!--        {{ todoItem }} // {"completed": false, "item": "789" } -->
 
         <span class="removeBtn" v-on:click="removeTodo(todoItem, index)">
           <i class="fas fa-trash-alt"></i>
@@ -31,8 +36,13 @@ export default {
       localStorage.removeItem(todoItem);
       this.todoItems.splice(index, 1);
     },
-    toggleComplete: function () {
+    toggleComplete: function (todoItem, index) {
+      // console.log(todoItem);
+      todoItem.completed = !todoItem.completed;
 
+      // 로컬 스토리지 데이터 갱신
+      localStorage.removeItem(todoItem.item);
+      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
     }
   },
 
@@ -44,7 +54,13 @@ export default {
 
         // 기본으로 생성되는 key 제외
         if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
-          this.todoItems.push(localStorage.key(i));
+          // typeof: type 확인
+          // JSON.parse: 개발자 화면 - console 에서 object 를 구별하여 보여줌
+          // console.log(JSON.parse( localStorage.getItem(localStorage.key(i)) ));
+
+          this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
+
+          // this.todoItems.push(localStorage.key(i));
           // console.log(localStorage.key(i));
         }
       } //for
