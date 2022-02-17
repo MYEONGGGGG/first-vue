@@ -2,7 +2,7 @@
   <div>
     <ul>
 <!--  리스트 출력-->
-      <li v-for="(todoItem, index) in todoItems" v-bind:key="todoItem.item" class="shadow"> <!-- shadow: App.vue 의 style class -->
+      <li v-for="(todoItem, index) in propsdata" v-bind:key="todoItem.item" class="shadow"> <!-- shadow: App.vue 의 style class -->
         <i class="checkBtn fas fa-check"
            v-bind:class="{checkBtnCompleted: todoItem.completed}"
            v-on:click="toggleComplete(todoItem, index)"></i>
@@ -22,11 +22,8 @@
 
 <script>
 export default {
-  data: function () {
-    return {
-      todoItems: []
-    }
-  },
+  props: ['propsdata'],
+
   methods: {
     removeTodo: function (todoItem, index) {
       // 동작 확인
@@ -44,27 +41,6 @@ export default {
       localStorage.removeItem(todoItem.item);
       localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
     }
-  },
-
-  // 인스턴스가 생성되는 시점에 호출되는 로직
-  created: function () {
-    // localstorage 데이터가 존재 한다면
-    if (localStorage.length > 0) {
-      for (var i=0; i<localStorage.length; i++) {
-
-        // 기본으로 생성되는 key 제외
-        if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
-          // typeof: type 확인
-          // JSON.parse: 개발자 화면 - console 에서 object 를 구별하여 보여줌
-          // console.log(JSON.parse( localStorage.getItem(localStorage.key(i)) ));
-
-          this.todoItems.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-
-          // this.todoItems.push(localStorage.key(i));
-          // console.log(localStorage.key(i));
-        }
-      } //for
-    } //if
   }
 }
 </script>
