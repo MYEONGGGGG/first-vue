@@ -20,11 +20,8 @@ export default {
     addTodo: function () {
       // 값이 존재할 경우
       if (this.newTodoItem !== '') {
-        var obj = {completed: false, item: this.newTodoItem};
-
-        // 저장하는 로직
-        // localStorage.setItem(this.newTodoItem, obj); // key: 입력값, value: [Object Object]
-         localStorage.setItem(this.newTodoItem, JSON.stringify(obj)); // key: 입력값, value: {component: false item: 입력값}
+        // this.$emit('이벤트 이름', 인자1, 인자2, ...);
+        this.$emit('addTodoItem', this.newTodoItem);
 
         // 초기화
         this.clearInput();
