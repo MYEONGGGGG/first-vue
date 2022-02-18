@@ -7,7 +7,7 @@
     <TodoList v-bind:propsdata="todoItems"
               v-on:removeItem="removeOneItem"
               v-on:toggleItem="toggleOneItem"></TodoList>
-    <TodoFooter></TodoFooter>
+    <TodoFooter v-on:clearAll="clearAllItem"></TodoFooter>
   </div>
 </template>
 
@@ -53,8 +53,13 @@ export default {
       // 로컬 스토리지 데이터 갱신
       localStorage.removeItem(todoItem.item);
       localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
-    }
-  },
+    },
+    clearAllItem: function () {
+      localStorage.clear();
+      this.todoItems = [];
+    },
+  }, //methods
+
   // 인스턴스가 생성되는 시점에 호출되는 로직
   created: function () {
     // localstorage 데이터가 존재 한다면
