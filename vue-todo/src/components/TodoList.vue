@@ -1,7 +1,7 @@
 <template>
   <div>
-    <ul>
-<!--  리스트 출력-->
+    <transition-group name="list" tab="ul">
+      <!--  리스트 출력-->
       <li v-for="(todoItem, index) in propsdata" v-bind:key="todoItem.item" class="shadow"> <!-- shadow: App.vue 의 style class -->
         <i class="checkBtn fas fa-check"
            v-bind:class="{checkBtnCompleted: todoItem.completed}"
@@ -16,7 +16,7 @@
           <i class="fas fa-trash-alt"></i>
         </span>
       </li>
-    </ul>
+    </transition-group>
   </div>
 </template>
 
@@ -71,5 +71,19 @@ li {
 .removeBtn {
   margin-left: auto;
   color: #de4343;
+}
+
+
+/* 리스트 아이템 트렌지션 효과 */
+/* transition-group 의  name + 클래스 명 */
+/* 클래스: "name"-enter, "name"-enter-active, "name"-enter-to,  --> 효과가 들어가기 전
+          "name"-leave, "name"-leave-active, "name"-leave-to   --> 효과가 나올때 */
+
+.list-enter-active, .list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(30px);
 }
 </style>
