@@ -18,6 +18,11 @@ import TodoInput from "./components/TodoInput";
 import TodoList from "./components/TodoList";
 import TodoFooter from "./components/TodoFooter";
 
+/*
+const  와  let  의 차이점
+ - const: 값 재할당 불가 (한번 선언한 변수값에 최초로 대입한 값만 할당)
+ - let: 값 재선언 불가 (한번 선언할 경우 해당하는 메모리에 값을 대입하기때문에 동일한 변수값으로 선언이 불가능)
+* */
 
 export default {
   data: function () {
@@ -27,7 +32,8 @@ export default {
   },
   methods: {
     addOneItem: function (todoItem) {
-      var obj = {completed: false, item: todoItem};
+      // var obj = {completed: false, item: todoItem};
+      const obj = {completed: false, item: todoItem}; // const: 변수 충돌 방지
 
       // 저장하는 로직
       // localStorage.setItem(this.newTodoItem, obj); // key: 입력값, value: [Object Object]
@@ -64,7 +70,8 @@ export default {
   created: function () {
     // localstorage 데이터가 존재 한다면
     if (localStorage.length > 0) {
-      for (var i=0; i<localStorage.length; i++) {
+      // for (var i=0; i<localStorage.length; i++) {
+      for (let i=0; i<localStorage.length; i++) { // let: 값 재할당 가능
 
         // 기본으로 생성되는 key 제외
         if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
