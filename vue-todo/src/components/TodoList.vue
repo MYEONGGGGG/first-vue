@@ -25,14 +25,14 @@ export default {
   props: ['propsdata'],
 
   methods: {
-    removeTodo: function (todoItem, index) {
+    removeTodo(todoItem, index) {
       // this.$emit('이벤트 이름', 인자1, 인자2, ...);
       this.$emit('removeItem', todoItem, index);
 
       // 동작 확인
       // console.log(todoItem)
     },
-    toggleComplete: function (todoItem, index) {
+    toggleComplete(todoItem, index) {
       this.$emit('toggleItem', todoItem, index);
     }
   }

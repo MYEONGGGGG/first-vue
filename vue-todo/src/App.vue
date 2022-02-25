@@ -25,13 +25,16 @@ const  와  let  의 차이점
 * */
 
 export default {
-  data: function () {
+  data() {
     return {
       todoItems: []
     }
   },
   methods: {
-    addOneItem: function (todoItem) {
+    // ES6를 통해 메서드 속성 함수를 축약
+    // addOneItem: function(todoItem) -> addOneItem(todoItem)
+
+    addOneItem(todoItem) {
       // var obj = {completed: false, item: todoItem};
       const obj = {completed: false, item: todoItem}; // const: 변수 충돌 방지
 
@@ -41,13 +44,13 @@ export default {
 
       this.todoItems.push(obj);
     },
-    removeOneItem: function (todoItem, index) {
+    removeOneItem(todoItem, index) {
       // console.log(todoItem, index); // 동작 확인
       localStorage.removeItem(todoItem.item); // 오브젝트(todoItem)가 아닌 특정 문자열 기준으로 접근하여
                                               // 삭제하게 구성했기때문에 todoItem.item 를 이용하여 지운다.
       this.todoItems.splice(index, 1);
     },
-    toggleOneItem: function (todoItem, index) {
+    toggleOneItem(todoItem, index) {
       console.log(todoItem);
 
       // 안티패턴(anti-pattern) 로직 =========
@@ -60,14 +63,14 @@ export default {
       localStorage.removeItem(todoItem.item);
       localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
     },
-    clearAllItem: function () {
+    clearAllItem() {
       localStorage.clear();
       this.todoItems = [];
     },
   }, //methods
 
   // 인스턴스가 생성되는 시점에 호출되는 로직
-  created: function () {
+  created() {
     // localstorage 데이터가 존재 한다면
     if (localStorage.length > 0) {
       // for (var i=0; i<localStorage.length; i++) {
@@ -89,10 +92,16 @@ export default {
   },
   components: {
     //컴포넌트 태그명 : 컴포넌트 내용
-    'TodoHeader': TodoHeader,
-    'TodoInput': TodoInput,
-    'TodoList': TodoList,
-    'TodoFooter': TodoFooter
+    // 'TodoHeader': TodoHeader,
+    // 'TodoInput': TodoInput,
+    // 'TodoList': TodoList,
+    // 'TodoFooter': TodoFooter
+
+    // 축약
+    TodoHeader,
+    TodoInput,
+    TodoList,
+    TodoFooter
   }
   // components: {TodoFooter, TodoList, TodoInput, TodoHeader},
   // comments: {

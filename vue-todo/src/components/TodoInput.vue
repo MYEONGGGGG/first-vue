@@ -31,14 +31,14 @@ import Modal from "./common/Modal.vue";
 
 export default {
   components: {Modal},
-  data: function () {
+  data() {
     return {
       newTodoItem: "",
       showModal: false
     }
   },
   methods: {
-    addTodo: function () {
+    addTodo() {
       // 입력값이 존재할 경우
       if (this.newTodoItem !== '') {
         // this.$emit('이벤트 이름', 인자1, 인자2, ...);
@@ -52,7 +52,7 @@ export default {
         this.showModal = !this.showModal
       }
     },
-    clearInput: function () {
+    clearInput() {
       this.newTodoItem = '';
     },
     components: {
@@ -61,7 +61,10 @@ export default {
       // Modal.vue : TodoInput.vue 의 하위 컴포넌트
 
       // Modal 컴포넌트 등록
-      Modal: Modal
+      // Modal: Modal
+
+      // 축약
+      Modal
     }
   }
 }
