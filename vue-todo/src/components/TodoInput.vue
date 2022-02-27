@@ -42,7 +42,8 @@ export default {
       // 입력값이 존재할 경우
       if (this.newTodoItem !== '') {
         // this.$emit('이벤트 이름', 인자1, 인자2, ...);
-        this.$emit('addTodoItem', this.newTodoItem);
+        // this.$emit('addTodoItem', this.newTodoItem);
+        this.$store.commit('addOneItem', this.newTodoItem);
 
         // 초기화
         this.clearInput();

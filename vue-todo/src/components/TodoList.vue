@@ -2,15 +2,14 @@
   <div>
     <transition-group name="list" tab="ul">
       <!--  리스트 출력-->
-      <li v-for="(todoItem, index) in propsdata" v-bind:key="todoItem.item" class="shadow"> <!-- shadow: App.vue 의 style class -->
+      <li v-for="(todoItem, index) in this.$store.state.todoItems" v-bind:key="todoItem.item" class="shadow"> <!-- shadow: App.vue 의 style class -->
         <i class="checkBtn fas fa-check"
            v-bind:class="{checkBtnCompleted: todoItem.completed}"
            v-on:click="toggleComplete(todoItem, index)"></i>
 
         <!-- 보여지는 value 값 -->
         <span v-bind:class="{textCompleted: todoItem.completed}">
-        <!-- 789 --> {{ todoItem.item }} </span>
-        <!--        {{ todoItem }} // {"completed": false, "item": "789" } -->
+              {{ todoItem.item }} </span>
 
         <span class="removeBtn" v-on:click="removeTodo(todoItem, index)">
           <i class="fas fa-trash-alt"></i>
@@ -22,18 +21,19 @@
 
 <script>
 export default {
-  props: ['propsdata'],
-
   methods: {
     removeTodo(todoItem, index) {
       // this.$emit('이벤트 이름', 인자1, 인자2, ...);
-      this.$emit('removeItem', todoItem, index);
+      // this.$emit('removeItem', todoItem, index);
+
+      this.$store.commit('removeOneItem', {todoItem, index});
 
       // 동작 확인
       // console.log(todoItem)
     },
     toggleComplete(todoItem, index) {
-      this.$emit('toggleItem', todoItem, index);
+      // this.$emit('toggleItem', todoItem, index);
+      this.$store.commit('toggleOneItem', {todoItem, index});
     }
   }
 }

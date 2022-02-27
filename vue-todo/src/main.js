@@ -1,9 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'        // APP 컴포넌트 등록
+import { store } from './store/store.js'
 
 // 인스턴스 생성
 new Vue({
   el: '#app',                      // id가 app인 html tag에 Vue 컴포넌트가 마운팅
+  store,                           // 변수 등록(ES6 를 이용한 축약 속성)
+  // store: store,                    // 변수 등록
   render: h => h(App)
 
   /*
