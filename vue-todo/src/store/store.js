@@ -37,7 +37,7 @@ const storage = {
     } //if
 
     return arr;
-  },
+  }
 };
 
 export const store = new Vuex.Store({
@@ -45,6 +45,13 @@ export const store = new Vuex.Store({
     // headerText: 'TODO it!'
     todoItems: storage.fetch()
   },
+
+  getters: {
+    storedTodoItems(state) {
+      return state.todoItems;
+    }
+  },
+
   mutations: {
     addOneItem(state, todoItem) {
       const obj = {completed: false, item: todoItem};  // const: 변수 충돌 방지
