@@ -1,15 +1,16 @@
 <template>
-  <div id="app"> Hello! </div>
+  <div id="app">
+    <!-- index.js: url 에 해당하는 router view 를 불러온다. -->
+    <router-view />
+  </div>
 </template>
 
 <script>
-
 export default {
-  methods: {
-    fetchDate() {
-      console.log('hello')
-    }
-  }
+  name: 'App',
+  components: {
+    //
+  },
 }
 </script>
 
