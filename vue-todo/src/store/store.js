@@ -6,75 +6,62 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+/**
+ * 프로젝트 구조화 & 모듈화 방법1.
+ *   ES6 문법을(import, export) 이용하여 속성별로 모듈화
+ *   모듈 대상: Vuex.Store({}) 의 속성들
+ * */
+// import * as getters from './getters.js'
+// import * as mutations from './mutations.js'
+
+/**
+ * 프로젝트 구조화 & 모듈화 방법2.
+ * */
+import todoApp from './modules/todoApp.js'
+
+
 
 /////// vuex 설치 및 등록
 
 Vue.use(Vuex); // .use : vue 의 플러그인
                // vue 에서 vuex 를 사용하겠다.
 
-
-const storage = {
-  fetch() {
-    const arr = [];
-
-    // localstorage 데이터가 존재 한다면
-    if (localStorage.length > 0) {
-      // for (var i=0; i<localStorage.length; i++) {
-      for (let i=0; i<localStorage.length; i++) { // let: 값 재할당 가능
-
-        // 기본으로 생성되는 key 제외
-        if (localStorage.key(i) !== 'loglevel:webpack-dev-server') {
-          // typeof: type 확인
-          // JSON.parse: 개발자 화면 - console 에서 object 를 구별하여 보여줌
-          // console.log(JSON.parse( localStorage.getItem(localStorage.key(i)) ));
-
-          arr.push(JSON.parse(localStorage.getItem(localStorage.key(i))));
-
-          // this.todoItems.push(localStorage.key(i));
-          // console.log(localStorage.key(i));
-        }
-      } //for
-    } //if
-
-    return arr;
-  }
-};
-
 export const store = new Vuex.Store({
-  state: {
-    // headerText: 'TODO it!'
-    todoItems: storage.fetch()
-  },
 
-  getters: {
-    storedTodoItems(state) {
-      return state.todoItems;
-    }
-  },
 
-  mutations: {
-    addOneItem(state, todoItem) {
-      const obj = {completed: false, item: todoItem};  // const: 변수 충돌 방지
+  /**
+   * 프로젝트 구조화 & 모듈화 방법1.
+   * ES6 문법) 명칭이 같을 경우 통합 가능
+   *
+   * state: {},
+   * getters: getters,
+   * mutations: mutations
+   *
+   * -- ES6 문법 적용-->
+   *
+   * state: {},
+   * getters,
+   * mutations
+   * */
+  // 모듈화 방법2 를 이용할 경우 이 부분은 todoApp.js 로 이동한다.
+  // state: {
+  //   // headerText: 'TODO it!'
+  //   todoItems: storage.fetch()
+  // },
 
-      // 저장하는 로직
-      localStorage.setItem(todoItem, JSON.stringify(obj));
-      state.todoItems.push(obj);
-    },
-    removeOneItem(state, payload) {
-      localStorage.removeItem(payload.todoItem.item);
-      state.todoItems.splice(payload.index, 1);
-    },
-    toggleOneItem(state, payload) {
-      state.todoItems[payload.index].completed = !state.todoItems[payload.index].completed;
+// //  getters: getters,
+//   getters,
+//
+// //  mutations: mutations
+//   mutations
 
-      // 로컬 스토리지 데이터 갱신
-      localStorage.removeItem(payload.todoItem.item);
-      localStorage.setItem(payload.todoItem.item, JSON.stringify(payload.todoItem));
-    },
-    clearAllItems(state) {
-      localStorage.clear();
-      state.todoItems = [];
-    }
+
+  /**
+   * 프로젝트 구조화 & 모듈화 방법2.
+   * */
+  modules: {
+// todoApp: todoApp
+    todoApp
   }
 });
 
