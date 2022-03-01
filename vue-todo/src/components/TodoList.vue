@@ -3,7 +3,7 @@
     <transition-group name="list" tab="ul">
       <!--  리스트 출력-->
       <!-- this.todoItems : 스크립트에 등록한 연산자 -->
-      <li v-for="(todoItem, index) in this.storedTodoItems()" v-bind:key="todoItem.item" class="shadow"> <!-- shadow: App.vue 의 style class -->
+      <li v-for="(todoItem, index) in this.storedTodoItems" v-bind:key="todoItem.item" class="shadow"> <!-- shadow: App.vue 의 style class -->
         <i class="checkBtn fas fa-check"
            v-bind:class="{checkBtnCompleted: todoItem.completed}"
            v-on:click="toggleComplete(todoItem, index)"></i>
