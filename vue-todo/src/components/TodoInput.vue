@@ -29,14 +29,27 @@
 <script>
 import Modal from "./common/Modal.vue";
 
+
 export default {
-  components: {Modal},
+  components: {
+    // 현재 화면 기준 관계도
+    // App.vue : TodoInput.vue 의 상위 컴포넌트
+    // Modal.vue : TodoInput.vue 의 하위 컴포넌트
+
+    // Modal 컴포넌트 등록
+    // Modal: Modal
+
+    // 축약
+    Modal
+  },
+
   data() {
     return {
       newTodoItem: "",
       showModal: false
     }
   },
+
   methods: {
     addTodo() {
       // 입력값이 존재할 경우
@@ -55,17 +68,6 @@ export default {
     },
     clearInput() {
       this.newTodoItem = '';
-    },
-    components: {
-      // 현재 화면 기준 관계도
-      // App.vue : TodoInput.vue 의 상위 컴포넌트
-      // Modal.vue : TodoInput.vue 의 하위 컴포넌트
-
-      // Modal 컴포넌트 등록
-      // Modal: Modal
-
-      // 축약
-      Modal
     }
   }
 }
