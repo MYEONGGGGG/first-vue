@@ -1,26 +1,27 @@
 <template>
   <div id="app">
+<!--    <Toolbar></Toolbar>-->
+    <tool-bar></tool-bar>
+
     <!-- index.js: url 에 해당하는 router view 를 불러온다. -->
-    <router-view />
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
+import ToolBar from "@/components/ToolBar.vue";
+
 export default {
   name: 'App',
   components: {
-    //
+    ToolBar
   },
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
+body {
+  padding: 0;
+  margin: 0;
 }
 </style>
