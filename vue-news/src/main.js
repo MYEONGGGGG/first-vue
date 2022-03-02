@@ -6,9 +6,10 @@
  * 아래와 같은 방법을 이용해야 함.
  * */
 import { createApp } from 'vue';
-import { router } from './router';
+import { router } from './routes';
 
 import App from './App.vue';
+import axios from "axios";
 
 // Vue.config.productionTip = false;
 
@@ -21,5 +22,9 @@ import App from './App.vue';
 
 // Vue instance 생성
 const app = createApp(App);
-app.use(router); // 사용 설정 하기
+// 사용 설정 하기
+app.use(router);
+app.config.globalProperties.axios = axios;
+
+// mount
 app.mount('#app');
