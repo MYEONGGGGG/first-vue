@@ -1,11 +1,12 @@
 <template>
   <div>
-    <div v-for="item in items">{{ item }}</div>
+    <div v-for="item in items">{{ item.title }}</div>
+<!--    <div v-for="item in items">{{ item }}</div>-->
   </div>
 </template>
 
 <script>
-import { fetchItemList } from "@/api/index.js";
+import {fetchItemList} from "@/api/index.js";
 
 export default {
   data() {
@@ -14,16 +15,9 @@ export default {
     }
   },
   created() {
-    var vm = this;
-
     fetchItemList()
-        .then(function (response) {
-          console.log(response);
-          vm.items = response.data;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+        .then(response => this.items = response.data)
+        .catch(error => console.log(error));
   }
 }
 </script>

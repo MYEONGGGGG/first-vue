@@ -1,29 +1,23 @@
 <template>
   <div>
-    <div v-for="ask in asks">{{ ask }}}</div>
+    <div v-for="ask in askList">{{ ask.title }}}</div>
+<!--    <div v-for="ask in askList">{{ ask }}}</div>-->
   </div>
 </template>
 
 <script>
-import { fetchAskList } from '@/api/index.js';
+import {fetchAskList} from '@/api/index.js';
 
 export default {
   data() {
     return {
-      asks: []
+      askList: []
     }
   },
   created() {
-    var vm = this;
-
     fetchAskList()
-        .then(function (response) {
-          console.log(response);
-          vm.asks = response.data;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+        .then(response => this.askList = response.data)
+        .catch(error => console.log(error));
   }
 }
 </script>

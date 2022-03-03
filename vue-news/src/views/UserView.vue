@@ -1,6 +1,7 @@
 <template>
   <div>
-    <div v-for="user in users">{{ user }}</div>
+    <div v-for="user in users">{{ user.id }}</div>
+<!--    <div v-for="user in users">{{ user }}</div>-->
   </div>
 </template>
 
@@ -14,16 +15,9 @@ export default {
     }
   },
   created() {
-    var vm = this;
-
     fetchUserInfo()
-        .then(function (response) {
-          console.log(response);
-          vm.users = response.data;
-        })
-        .catch(function (error) {
-          console.log(error);
-        });
+        .then(response => this.users = response.data)
+        .catch(error => console.log(error));
   }
 }
 </script>
