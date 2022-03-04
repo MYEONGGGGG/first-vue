@@ -41,7 +41,7 @@ npm i vue-router@3.5.3 --save
 npm i vue-router@next
 
 =======================
-HNPWA API
+[ HNPWA API ]
 
  [ Item feeds ]
  - News: https://api.hnpwa.com/v0/news/1.json
@@ -54,7 +54,7 @@ HNPWA API
          https://api.hnpwa.com/v0/user/cristianbote.json
 
 =======================
- Vue Axios
+ [ Vue Axios ]
 
  npm install --save axios
 // 설치 후 main.js 에 mount 하기 전 config 설정
@@ -63,8 +63,9 @@ HNPWA API
 // app.config.globalProperties.axios = axios;
 
 =======================
-this 개념과 바인딩 원리 (*참고 URL: https://imsoncod.tistory.com/21
-https://velog.io/@danmin20/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-this-%EB%B0%94%EC%9D%B8%EB%94%A9%EC%9D%B4%EB%9E%80)
+[ this 개념과 바인딩 원리 ]
+(*참고 URL: https://imsoncod.tistory.com/21
+           https://velog.io/@danmin20/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8-this-%EB%B0%94%EC%9D%B8%EB%94%A9%EC%9D%B4%EB%9E%80)
 
 바인딩(binding) 종류
 1. default
@@ -79,18 +80,42 @@ https://velog.io/@danmin20/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B
 3. 객체의 메소드 내부
    : 객체 내부의 메소드 내부에서 this를 호출하면 해당 객체를 가리킨다.
 
-   예1) 메소드 내부의 함수 내부에서 호출할 경우
-   -----------------------------------------
-   var obj = {
-       print: function() {
-         console.log(this); // obj 객체
-
-         var print2 = function() {
-           console.log(this); // window 객체
-         }
-         print2();
-      }
-   }
-   -----------------------------------------
-
 4. 생성자 함수 내부
+   : new 연산자로 생성자 함수를 호출할 때, 생성자 함수 내부에서 호출된 this는 생성자 함수를 통해 새로 생성되어 반환되는 객체를 가리킨다.
+
+=======================
+[ ajax ]
+ : 자바스크립트를 이용해서 비동기적(Asynchronous)으로 서버와 브라우저가 데이터를 교환할 수 있는 통신 방식을 의미.
+   Ajax을 위한 데이터 형식은 JSON(JavaScript Object Notation)을 사용하는 것이 일반적이다.
+
+ callback.html
+ promise.html
+ 실습 자료 참고
+
+=======================
+[ jQuery ]
+: javascript 기반으로 만들어진 라이브러리
+
+https://releases.jquery.com/
+
+2022-03-04 기준 가장 최신 버전: jQuery Core 3.6.0 - uncompressed
+
+=======================
+[ JSON ]
+ : Ajax 요청에 대한 서버의 응답은 주로 HTML, XML, JSON이 사용된다. 이 중 가장 일반적인 데이터 형식은 JSON(JavaScript Object Notation)이다.
+
+=======================
+[ Vuex ]
+ : 상태(state)를 관리하는 라이브러리
+   즉, Vue.js 애플리케이션에 대한 상태 관리 패턴 + 라이브러리
+   * 상태란? 컴포넌트 간 공유할 수 있는 데이터
+   * 참고URL: https://doozi0316.tistory.com/entry/Vuex-%EA%B0%9C%EB%85%90%EA%B3%BC-%EC%98%88%EC%A0%9C-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0
+             https://velog.io/@jtwjs/Vuex%EB%9E%80
+
+ - Vuex 구조 이해
+   구조: Actions --> Mutations --> State --> Vue Components
+   * 단방향 흐름
+
+
+ [ 설치 방법 ]
+  npm install vuex@next --save
