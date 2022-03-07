@@ -1,26 +1,34 @@
 <template>
   <div>
-    <div v-for="news in newsList">{{ news.title }}}</div>
-<!--    <div v-for="news in newsList">{{ news }}}</div>-->
+    <div v-for="news in this.$store.state.newsList">{{ news.title }}</div>
+
+    <!-- store를 구현하면서 newsList 를 참조하는 부분이 사라져 필요없어짐 -->
+    <!--    <div v-for="news in newsList">{{ news.title }}}</div>-->
   </div>
 </template>
 
 <script>
-import { fetchNewsList } from '@/api/index.js';
+// import { fetchNewsList } from '../api/index.js';
 // import axios from 'axios';
 
 export default {
-  data() {
-    return {
-      newsList: []
-    }
-  },
+  // store 를 구현하면서 data() 는 필요없어짐
+  // data() {
+  //   return {
+  //     newsList: []
+  //   }
+  // },
+
+
   created() {
 
-    //화살표 함수로 변경 (this 바인딩 필요 없음) ** 상황별 this 바인딩 원리 이해 필요
-    fetchNewsList()
-        .then(response => this.newsList = response.data)
-        .catch(error => console.log(error));
+    this.$store.dispatch('FETCH_NEWS_LIST'); // FETCH_NEWS 로 코드의 제어가 넘어감.
+
+
+    // //화살표 함수로 변경 (this 바인딩 필요 없음) ** 상황별 this 바인딩 원리 이해 필요
+    // fetchNewsList()
+    //     .then(response => this.newsList = response.data)
+    //     .catch(error => console.log(error));
 
 
     // var vm = this; // this 바인딩

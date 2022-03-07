@@ -112,10 +112,14 @@ https://releases.jquery.com/
    * 참고URL: https://doozi0316.tistory.com/entry/Vuex-%EA%B0%9C%EB%85%90%EA%B3%BC-%EC%98%88%EC%A0%9C-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0
              https://velog.io/@jtwjs/Vuex%EB%9E%80
 
- - Vuex 구조 이해
-   구조: Actions --> Mutations --> State --> Vue Components
-   * 단방향 흐름
+ - Vuex 구조 이해(Action ~ state 구간이 Vuex 구조)
+   구조: Vue Components ==(Dispatch)==> Actions ==(Commit)==> Mutations
+                       ==(Mutate)==> State ==(Render)==> Vue Components ...
+   * 단방향 순환
 
+   Vuex 적용 흐름 [[[  API  -->  Vuex(actions >> mutations >> state)  --> view  ]]]
+   // Vue3 에서 ★Vuex3 버전★ 이용할 경우와   ★Vuex4 버전★ 이용할 경우 Store 연결하는 방법이 다르니 참고해야한다.
+   * 적용 관련 참고URL: https://kyounghwan01.github.io/blog/Vue/vue3/composition-api-vuex/#vuex-%E1%84%89%E1%85%A6%E1%84%90%E1%85%B5%E1%86%BC-%E1%84%86%E1%85%B5%E1%86%BE-store-module-1%E1%84%80%E1%85%A2%E1%84%85%E1%85%A9-%E1%84%89%E1%85%B5%E1%86%AF%E1%84%92%E1%85%A2%E1%86%BC
 
- [ 설치 방법 ]
+ - 설치 방법
   npm install vuex@next --save

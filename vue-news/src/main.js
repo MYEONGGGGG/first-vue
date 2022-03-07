@@ -6,6 +6,7 @@
  * 아래와 같은 방법을 이용해야 함.
  * */
 import { createApp } from 'vue';
+import { store } from './store';
 import { router } from './routes';
 
 import App from './App.vue';
@@ -22,8 +23,9 @@ import axios from "axios";
 
 // Vue instance 생성
 const app = createApp(App);
-// 사용 설정 하기
-app.use(router);
+
+app.use(router); // 라우터 연결
+app.use(store); // 스토어 연결
 app.config.globalProperties.axios = axios;
 
 // mount
