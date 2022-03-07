@@ -9,8 +9,8 @@ import { createWebHistory, createRouter } from 'vue-router';
 import NewsView from '@/views/NewsView.vue';
 import AskView from '@/views/AskView.vue';
 import JobsView from '@/views/JobsView.vue';
-import UserView from "@/views/UserView";
-import ItemView from "@/views/ItemView";
+// import UserView from "@/views/UserView";
+// import ItemView from "@/views/ItemView";
 
 // Vue.use(VueRouter);
 
@@ -49,14 +49,14 @@ export const router = new createRouter({
             component: JobsView
         },
 
-        {
-            path: '/user',
-            component: UserView
-        },
-
-        {
-            path: '/item',
-            component: ItemView
-        }
+        // {
+        //     path: '/user',
+        //     component: UserView
+        // },
+        //
+        // {
+        //     path: '/item',
+        //     component: ItemView
+        // }
     ]
 });
