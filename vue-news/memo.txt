@@ -21,6 +21,20 @@
   cli 3.x ==> 필요 O
 
 =======================
+[ ES6 ]
+
+ - Destructuring(디스트럭처링)
+   : 객체 구조( structure )를 제거( de ) 한다는 의미
+     구조화된 배열 또는 객체를 비구조화하여 1개 이상의 변수에 개별적으로 할당하는 것.
+
+   자료형에 따라 다음과 같은 방식으로 나뉜다.
+   1. 객체 디스트럭처링
+   2. 배열 디스트럭처링
+
+   *자세한 내용은 참고URL: https://velog.io/@seongkyun/%EB%94%94%EC%8A%A4%ED%8A%B8%EB%9F%AD%EC%B2%98%EB%A7%81-%ED%95%A0%EB%8B%B9
+
+
+=======================
 [ ESLint ]
 : 자바스크립트 문법에서 에러를 표시해주는 도구
 * cli 3 버전일 경우 추가 설치는 필요 없고, 사용하는 툴에서 ESLint 설정만 해두기
@@ -52,6 +66,7 @@ npm i vue-router@next
  - Item: https://api.hnpwa.com/v0/item/16493489.json
  - User: https://api.hnpwa.com/v0/user/davideast.json
          https://api.hnpwa.com/v0/user/cristianbote.json
+         https://jsonplaceholder.typicode.com/users
 
 =======================
  [ Vue Axios ]

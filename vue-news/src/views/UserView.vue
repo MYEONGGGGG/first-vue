@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-for="user in users">{{ user.id }}</div>
+    <div v-for="user in users">{{ user.email }}</div>
 <!--    <div v-for="user in users">{{ user }}</div>-->
   </div>
 </template>

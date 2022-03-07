@@ -84,14 +84,15 @@ function fetchItemList() {
 }
 
 function fetchUserInfo() {
-    return axios.get(`${config.baseUrl}user/davideast.json`)
-
+    // return axios.get(`${config.baseUrl}user/davideast.json`)
     /**
      created: "8 years ago"
      created_time: 1400006274
      id: "davideast"
      karma: 23
      */
+
+    return axios.get('https://jsonplaceholder.typicode.com/users')
 }
 
 export {
