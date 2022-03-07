@@ -1,6 +1,14 @@
 <template>
   <div>
-    <div v-for="news in this.$store.state.newsList">{{ news.title }}</div>
+    <p v-for="news in this.$store.state.newsList">
+      <a v-bind:href="news.url">{{ news.title }}</a> <!-- v-bind 로 연결 시, 변수가 된다. -->
+      <small>
+        {{ news.time_ago }} by
+<!--        <router-link v-bind:to="'/user/' + news.user">{{ news.user }}</router-link>-->
+        <router-link v-bind:to="`/user/${news.user}`">{{ news.user }}</router-link>
+      </small>
+    </p>
+<!--    <div v-for="news in this.$store.state.newsList">{{ news.title }}</div>-->
 
     <!-- store를 구현하면서 newsList 를 참조하는 부분이 사라져 필요없어짐 -->
     <!--    <div v-for="news in newsList">{{ news.title }}}</div>-->

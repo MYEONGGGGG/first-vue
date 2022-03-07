@@ -57,45 +57,25 @@ function fetchJobsList() {
      * */
 }
 
-function fetchShowList() {
-    return axios.get(`${config.baseUrl}show/1.json`)
-}
+// function fetchItemList() {
+//     return axios.get(`${config.baseUrl}item/16493489.json`)
+//
+//     /**
+//      comments_count: 232
+//      content: ""
+//      domain: "developers.google.com"
+//      id: 16493489
+//      points: 1926
+//      time: 1519922390
+//      time_ago: "4 years ago"
+//      title: "Machine Learning Crash Course"
+//      type: "link"
+//      url: "https://developers.google.com/machine-learning/crash-course/"
+//      user: "matant"
+//      */
+// }
 
-function fetchNewestList() {
-    return axios.get(`${config.baseUrl}newest/1.json`)
-}
-
-function fetchItemList() {
-    return axios.get(`${config.baseUrl}item/16493489.json`)
-
-    /**
-     comments_count: 232
-     content: ""
-     domain: "developers.google.com"
-     id: 16493489
-     points: 1926
-     time: 1519922390
-     time_ago: "4 years ago"
-     title: "Machine Learning Crash Course"
-     type: "link"
-     url: "https://developers.google.com/machine-learning/crash-course/"
-     user: "matant"
-     */
-}
-
-function fetchUserInfo() {
-    // return axios.get(`${config.baseUrl}user/davideast.json`)
-    /**
-     created: "8 years ago"
-     created_time: 1400006274
-     id: "davideast"
-     karma: 23
-     */
-
-    return axios.get('https://jsonplaceholder.typicode.com/users')
-}
 
 export {
-    fetchNewsList, fetchAskList, fetchJobsList, fetchShowList,
-    fetchNewestList, fetchItemList, fetchUserInfo
+    fetchNewsList, fetchAskList, fetchJobsList
 }

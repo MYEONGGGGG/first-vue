@@ -2,6 +2,7 @@ import { fetchAskList, fetchJobsList, fetchNewsList } from '../api/index.js';
 
 export default {
     // actions 으로 api 데이터 호출
+    // 일반적인 방법
     FETCH_NEWS_LIST(context) {
         fetchNewsList()
             .then(response => {
