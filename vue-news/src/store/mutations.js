@@ -10,5 +10,9 @@ export default {
 
     SET_JOBS(state, jobData) {
         state.jobs = jobData;
+    },
+
+    SET_USER(state, userData) {
+        state.user = userData;
     }
 }

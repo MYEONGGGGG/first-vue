@@ -7,7 +7,7 @@ const config = {
 
 // 2. API 함수 정리
 function fetchNewsList() {
-    return axios.get(`${config.baseUrl}news/1.json`)
+    return axios.get(`${config.baseUrl}news/1.json`);
     // return axios.get(config.baseUrl + url);
 
     /**
@@ -25,7 +25,7 @@ function fetchNewsList() {
 }
 
 function fetchAskList() {
-    return axios.get(`${config.baseUrl}ask/1.json`)
+    return axios.get(`${config.baseUrl}ask/1.json`);
 
     /**
      comments_count: 46
@@ -41,7 +41,7 @@ function fetchAskList() {
 }
 
 function fetchJobsList() {
-    return axios.get(`${config.baseUrl}jobs/1.json`)
+    return axios.get(`${config.baseUrl}jobs/1.json`);
 
     /**
      comments_count: 0
@@ -57,25 +57,11 @@ function fetchJobsList() {
      * */
 }
 
-// function fetchItemList() {
-//     return axios.get(`${config.baseUrl}item/16493489.json`)
-//
-//     /**
-//      comments_count: 232
-//      content: ""
-//      domain: "developers.google.com"
-//      id: 16493489
-//      points: 1926
-//      time: 1519922390
-//      time_ago: "4 years ago"
-//      title: "Machine Learning Crash Course"
-//      type: "link"
-//      url: "https://developers.google.com/machine-learning/crash-course/"
-//      user: "matant"
-//      */
-// }
+function fetchUserInfo(username) {
+    return axios.get(`${config.baseUrl}user/${username}.json`);
+}
 
 
 export {
-    fetchNewsList, fetchAskList, fetchJobsList
+    fetchNewsList, fetchAskList, fetchJobsList, fetchUserInfo
 }

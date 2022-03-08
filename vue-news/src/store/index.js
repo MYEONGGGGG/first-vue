@@ -27,7 +27,8 @@ export const store = new createStore({
     state: {
         newsList: [],
         askList: [],
-        jobs: []
+        jobs: [], //배열
+        user: {} // 객체
     },
     getters: {
         fetchedAsk(state) {
