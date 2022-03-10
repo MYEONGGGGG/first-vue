@@ -10,7 +10,7 @@ import NewsView from '@/views/NewsView.vue';
 import AskView from '@/views/AskView.vue';
 import JobsView from '@/views/JobsView.vue';
 import UserView from "@/views/UserView";
-// import ItemView from "@/views/ItemView";
+import ItemView from "@/views/ItemView";
 
 // Vue.use(VueRouter);
 
@@ -54,9 +54,9 @@ export const router = new createRouter({
             component: UserView
         },
 
-        // {
-        //     path: '/item',
-        //     component: ItemView
-        // }
+        {
+            path: '/item/:id',
+            component: ItemView
+        }
     ]
 });

@@ -1,9 +1,15 @@
 <template>
   <div>
     <p v-for="item in fetchedAsk">
-      <a v-bind:href="item.url">
-        {{ item.title }}
-      </a>
+
+<!-- 링크 연결 <a/> -> <router-link/>   -->
+<!-- #변경전 -->
+<!--      <a v-bind:href="item.url">{{ item.title }}</a>-->
+<!-- #변경후1 : 응답값 url 직접이용 -->
+<!--      <router-link v-bind:to="`/item/${item.url}`">{{ item.title }}</router-link>-->
+<!-- #변경후2 : 응답값 id 파라미터값을 조합해서 url 생성하여 이용 -->
+      <router-link v-bind:to="`/item/${item.id}`">{{ item.title }}</router-link>
+
       <small>{{ item.time_ago }} by {{ item.user }}</small>
     </p>
   </div>

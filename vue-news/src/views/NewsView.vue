@@ -30,15 +30,18 @@ export default {
 
   created() {
 
+    // #4
     this.$store.dispatch('FETCH_NEWS_LIST'); // FETCH_NEWS 로 코드의 제어가 넘어감.
 
 
+    // #3
     // //화살표 함수로 변경 (this 바인딩 필요 없음) ** 상황별 this 바인딩 원리 이해 필요
     // fetchNewsList()
     //     .then(response => this.newsList = response.data)
     //     .catch(error => console.log(error));
 
 
+    // #2
     // var vm = this; // this 바인딩
     // fetchNewsList()
     // .then(function (response) {
@@ -50,6 +53,7 @@ export default {
     // });
 
 
+    // #1
     // axios.get('https://api.hnpwa.com/v0/news/1.json')
     // .then(function(response) {
     //   console.log(response);

@@ -57,11 +57,27 @@ function fetchJobsList() {
      * */
 }
 
-function fetchUserInfo(username) {
-    return axios.get(`${config.baseUrl}user/${username}.json`);
+function fetchUserInfo(userName) {
+    return axios.get(`${config.baseUrl}user/${userName}.json`);
+}
+
+function fetchItemDtl(id) {
+    return axios.get(`${config.baseUrl}item/${id}.json`);
+
+    /**
+     "id":16493489,
+     "title":"Machine Learning Crash Course",
+     "points":1926,
+     "user":"matant",
+     "time":1519922390,
+     "time_ago":"4 years ago",
+     "type":"link",
+     "content":"",
+     "comments":[{...}, {...}, {...}...]
+     * */
 }
 
 
 export {
-    fetchNewsList, fetchAskList, fetchJobsList, fetchUserInfo
+    fetchNewsList, fetchAskList, fetchJobsList, fetchUserInfo, fetchItemDtl
 }

@@ -25,14 +25,22 @@ export const store = new createStore({
 
     // 내부 선언(vuex 구조)
     state: {
+        /**
+         * [] : 배열
+         * {} : 객체
+         * */
         newsList: [],
         askList: [],
-        jobs: [], //배열
-        user: {} // 객체
+        jobs: [],
+        user: {},
+        item: []
     },
     getters: {
         fetchedAsk(state) {
             return state.askList;
+        },
+        fetchedItem(state) {
+            return state.item;
         }
     },
     mutations,

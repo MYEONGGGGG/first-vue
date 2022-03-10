@@ -1,27 +1,69 @@
 <template>
   <div>
-    <div v-for="item in items">{{ item.title }}</div>
-<!--    <div v-for="item in items">{{ item }}</div>-->
+    <section>
+      <!-- 질문 상세 정보 -->
+      <div class="user-container">
+        <div> <!-- class="라이브러리" icon="아이콘명" -->
+          <i> <font-awesome-icon class="far-user" icon="user" /> </i>
+        </div>
+        <div class="user-description">
+            <router-link v-bind:to="`/user/${fetchedItem.user}`">{{ fetchedItem.user }}</router-link>
+            <div class="time">{{ fetchedItem.time_ago }}</div>
+        </div>
+      </div>
+      <h2>{{ fetchedItem.title }}</h2>
+    </section>
+
+    <section>
+      <div v-html="fetchedItem.content"></div>
+    </section>
+
+<!-- ========= 화면 구조화 전 ========= -->
+<!--    JSON 데이터 전체 바인딩(확인용) -->
+<!--    {{ this.$store.state.item }}-->
+
+<!--    mapGetters 로 변경: {{ itemDtl.title }} -> {{ fetchedItem.title }} -->
+<!--    관리자 화면에서 뷰엑스 바인딩을 확인해보면 맵게터로 연결된걸 확인할 수 있다. -->
+<!--    <p>title : {{ fetchedItem.title }}</p>-->
+<!--    <p>user : {{ fetchedItem.user }}</p>   -->
+<!--    <p>content: {{ fetchedItem.content }}</p>-->
   </div>
 </template>
 
 <script>
-import {fetchItemList} from "@/api/index.js";
+import { mapGetters } from 'vuex';
 
 export default {
-  data() {
-    return {
-      items: []
-    }
+  computed: {
+    // itemDtl() {
+    //   return this.$store.state.item;
+    // },
+
+    ...mapGetters(['fetchedItem'])
   },
+
   created() {
-    fetchItemList()
-        .then(response => this.items = response.data)
-        .catch(error => console.log(error));
+    const itemId = this.$route.params.id;
+
+    // store 이용하여 호출
+    this.$store.dispatch('FETCH_ITEM', itemId);
   }
 }
 </script>
 
 <style scoped>
-
+.user-container {
+  display: flex;
+  align-items: center;
+  padding: 0.5rem;
+}
+.far-user {
+  font-size: 2.5rem;
+}
+.user-description {
+  padding-left: 8px;
+}
+.time {
+  font-size: 7px;
+}
 </style>

@@ -1,4 +1,4 @@
-import { fetchAskList, fetchJobsList, fetchNewsList, fetchUserInfo } from '../api/index.js';
+import { fetchAskList, fetchJobsList, fetchNewsList, fetchUserInfo, fetchItemDtl } from '../api/index.js';
 
 export default {
     // actions 으로 api 데이터 호출
@@ -55,5 +55,16 @@ export default {
             .catch(error => {
                 console.log(error);
             });
+    },
+
+    FETCH_ITEM({commit}, id) {
+        fetchItemDtl(id)
+            .then(({data}) => {
+                commit('SET_ITEM', data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
     }
+
 }
