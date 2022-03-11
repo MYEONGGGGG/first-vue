@@ -33,7 +33,7 @@ export const store = new createStore({
         askList: [],
         jobs: [],
         user: {},
-        item: []
+        item: {}
     },
     getters: {
         fetchedAsk(state) {

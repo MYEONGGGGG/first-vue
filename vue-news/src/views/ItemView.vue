@@ -1,16 +1,31 @@
 <template>
   <div>
+    ItemView
     <section>
-      <!-- 질문 상세 정보 -->
-      <div class="user-container">
-        <div> <!-- class="라이브러리" icon="아이콘명" -->
-          <i> <font-awesome-icon class="far-user" icon="user" /> </i>
-        </div>
-        <div class="user-description">
-            <router-link v-bind:to="`/user/${fetchedItem.user}`">{{ fetchedItem.user }}</router-link>
-            <div class="time">{{ fetchedItem.time_ago }}</div>
-        </div>
-      </div>
+      <!-- 사용자 정보 -->
+      <user-profile :info="fetchedItem">
+        <div >{{ fetchedItem.user }}</div>
+        <template>{{ fetchedItem.time_ago }}</template>
+<!--        <div slot="username">{{ fetchedItem.user }}</div>-->
+<!--        <template slot="time">{{ fetchedItem.time_ago }}</template>-->
+
+        <h3 slot="body">
+          슬롯 재정의
+        </h3>
+      </user-profile>
+
+<!--      <div class="user-container">-->
+<!--        <div> &lt;!&ndash; class="라이브러리" icon="아이콘명" &ndash;&gt;-->
+<!--          <font-awesome-icon class="far-user" icon="user" />-->
+<!--        </div>-->
+<!--        <div class="user-description">-->
+<!--            <router-link v-bind:to="`/user/${fetchedItem.user}`">{{ fetchedItem.user }}</router-link>-->
+<!--            <div class="time">{{ fetchedItem.time_ago }}</div>-->
+<!--        </div>-->
+<!--      </div>-->
+    </section>
+
+    <section>
       <h2>{{ fetchedItem.title }}</h2>
     </section>
 
@@ -31,9 +46,14 @@
 </template>
 
 <script>
+import UserProfile from '../components/UserProfile.vue';
 import { mapGetters } from 'vuex';
 
 export default {
+  components: {
+    UserProfile
+  },
+
   computed: {
     // itemDtl() {
     //   return this.$store.state.item;
