@@ -1,15 +1,13 @@
 <template>
   <div>
-    UserView
     <user-profile :info="userInfo">
-      <div>{{ userInfo.id }}</div>
-      <template>{{ userInfo.time_ago }}</template>
-<!--      <div slot="username">{{ userInfo.id }}</div>-->
-<!--      <template slot="time">{{ userInfo.time_ago }}</template>-->
+<!--      <div>{{ userInfo.id }}</div>-->
+<!--      <template>{{ userInfo.time_ago }}</template>-->
 
-      <h3 slot="header">
-        슬롯 재정의
-      </h3>
+      <!-- slot 재정의 -->
+      <template v-slot:username><span>{{ userInfo.id }}</span></template>
+      <template v-slot:time><span>{{ 'Joined ' + userInfo.created }}, </span></template>
+      <template v-slot:karma><span>{{ userInfo.karma }}</span></template>
     </user-profile>
   </div>
 </template>

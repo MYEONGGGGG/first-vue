@@ -1,17 +1,19 @@
 <template>
   <div>
-    ItemView
     <section>
       <!-- 사용자 정보 -->
       <user-profile :info="fetchedItem">
-        <div >{{ fetchedItem.user }}</div>
-        <template>{{ fetchedItem.time_ago }}</template>
-<!--        <div slot="username">{{ fetchedItem.user }}</div>-->
-<!--        <template slot="time">{{ fetchedItem.time_ago }}</template>-->
+<!--        <div >{{ fetchedItem.user }}</div>-->
+<!--        <template>{{ fetchedItem.time_ago }}</template>-->
 
-        <h3 slot="body">
-          슬롯 재정의
-        </h3>
+        <!-- slot 재정의 -->
+        <template v-slot:username>
+          <router-link :to="`/user/${fetchedItem.user}`">
+            {{ fetchedItem.user }}
+          </router-link>
+        </template>
+
+        <template v-slot:time>{{ 'posted ' + fetchedItem.time_ago }}</template>
       </user-profile>
 
 <!--      <div class="user-container">-->

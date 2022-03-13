@@ -161,3 +161,29 @@ https://releases.jquery.com/
 [ Vue의 속성 ]
  * 참고 URL: https://tothefullest08.github.io/javascript/2019/07/04/VUE04-attributes/
             https://jocoma.tistory.com/entry/Vue%EC%9D%98-template%EC%86%8D%EC%84%B1
+
+=======================
+[ slot ]
+: vue에서 slot은 자식컴포넌트의 엘리먼트를 부모에게 지정할 때 사용한다.
+  또한 컴포넌트의 재사용성을 높여주는 기능이 있다.
+
+  1) named-slot: 이름이 있는 슬롯
+  2) slot-scope: 범위를 가지는 슬롯
+
+  그러나 Vue2.6 버전부터 v-slot 문법이 생기면서
+  위 두가지 속성은 사라질 예정이며, v-slot 사용을 권장한다.
+  * Vue3 버전부터는 공식적으로 삭제.
+  * v-slot:name 을 통해 name에 맞는 slot을 꺼내 사용할 수 있다.
+  * v-slot은 template 태그에만 추가하여 사용할 수 있다.
+  * 사용 예)
+    <base-layout>
+      <!-- 사용 방법1. v-slot:슬롯명 -->
+      <template v-slot:header>
+        <!-- 재정의 구간 -->
+      </template>
+
+      <!-- 사용 방법2. #슬롯명 --> <!-- 축약 문법 -->
+      <template #footer>
+        <!-- 재정의 구간 -->
+      </template>
+    </base-layout>

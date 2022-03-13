@@ -5,26 +5,28 @@
       <font-awesome-icon class="far-user" icon="user" />
     </div>
     <div class="user-description">
-      <div>username: {{ info.id }}</div>
-      time: {{ info.created }}
+<!--      <div>username: {{ info.id }}</div>-->
+<!--      time: {{ info.created }}-->
 
-      <slot name="header">
-        default header
+
+<!--      화면마다 접근해야하는 데이터가 다르기때문에-->
+<!--      slot으로 재정의하여 이용한다.-->
+<!--      ItemView -> info.user-->
+<!--      UserView -> info.id-->
+
+      <slot name="username">
+        <!-- 상위 컴포넌트에서 정의할 영역 -->
       </slot>
 
-      <slot name="body">
-        default body
-      </slot>
+      <div class="time">
+        <slot name="time">
+          <!-- 상위 컴포넌트에서 정의할 영역 -->
+        </slot>
 
-<!--      <slot name="username">-->
-<!--        &lt;!&ndash; 상위 컴포넌트에서 정의할 영역 &ndash;&gt;-->
-<!--      </slot>-->
-
-<!--      <div class="time">-->
-<!--        <slot name="time">-->
-<!--          &lt;!&ndash; 상위 컴포넌트에서 정의할 영역 &ndash;&gt;-->
-<!--        </slot>-->
-<!--      </div>-->
+        <slot name="karma">
+          <!-- 상위 컴포넌트에서 정의할 영역 -->
+        </slot>
+      </div>
     </div>
   </div>
 
