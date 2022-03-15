@@ -18,6 +18,7 @@
 import { createStore } from 'vuex';
 import mutations from "@/store/mutations";
 import actions from "@/store/actions";
+// import mitt from "mitt"; //mitt 예제
 
 export const store = new createStore({
 // export default createStore({ // 오류 발생: "export 'store' was not found in './store'
@@ -33,7 +34,9 @@ export const store = new createStore({
         askList: [],
         jobs: [],
         user: {},
-        item: {}
+        item: {},
+
+        // emitter: mitt() //컴포넌트에서 어디든 mitt()이 return 하는 emitter 에 접근가능하도록 state에 저장. //mitt 예제
     },
     getters: {
         fetchedAsk(state) {

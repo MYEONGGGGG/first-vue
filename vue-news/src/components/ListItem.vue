@@ -42,18 +42,18 @@
 <script>
 export default {
   // 데이터 분기 처리
-  created() {
-    const name = this.$route.path;
-    var dispatch;
-
-    if (name === '/news') { dispatch = 'FETCH_NEWS_LIST'; }
-    else if (name === '/ask') { dispatch = 'FETCH_ASK_LIST'; }
-    else if (name === '/jobs') { dispatch = 'FETCH_JOBS'; }
-    else { dispatch = null; }
-
-    if (dispatch != null) { this.$store.dispatch(dispatch); }
-    else { console.log('pathName is null!'); }
-  },
+  // created() {
+  //   const name = this.$route.path;
+  //   var dispatch;
+  //
+  //   if (name === '/news') { dispatch = 'FETCH_NEWS_LIST'; }
+  //   else if (name === '/ask') { dispatch = 'FETCH_ASK_LIST'; }
+  //   else if (name === '/jobs') { dispatch = 'FETCH_JOBS'; }
+  //   else { dispatch = null; }
+  //
+  //   if (dispatch != null) { this.$store.dispatch(dispatch); }
+  //   else { console.log('pathName is null!'); }
+  // },
 
   computed: {
     listItems() {

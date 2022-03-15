@@ -10,7 +10,9 @@ import { store } from './store';
 import { router } from './routes';
 
 import App from './App.vue';
-import axios from "axios";
+import axios from 'axios';
+// import mitt from 'mitt'; //mitt 예제
+import mitt from './utills/bus.js';
 
 // 설치했던 fontawesome-svg-core와 vue-fontawesome
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -36,7 +38,13 @@ const app = createApp(App);
 
 app.use(router); // 라우터 연결
 app.use(store); // 스토어 연결
-app.config.globalProperties.axios = axios;
+app.use(mitt);  // Mitt 연결
+app.config.globalProperties.axios = axios; // axios 등록
+
+//mitt 예제
+// // mitt 등록
+// const emitter = mitt();
+// app.config.globalProperties.emitter = emitter; // mitt 등록
 
 // 불러온 아이콘 목록을 라이브러리에 담는다.
 library.add(
