@@ -2,8 +2,10 @@
  * 하이 오더 컴포넌트(HOC)
  * : 컴포넌트의 로직(코드)를 재사용하기 위한 방법 및
  *   캡슐화(encapsulation)와 컴포넌트 추상화를 구현하는 방법.
- *
  *   컴포넌트의 로직을 훼손하지 않고 재사용성을 최대한 끌어올리겠다는 전략.
+ *
+ *   ★ 컴포넌트 구성
+ *   NewsView > ListView > ListItem
  * */
 import ListView from "@/views/ListView.vue";
 

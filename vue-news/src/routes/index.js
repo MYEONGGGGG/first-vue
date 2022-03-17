@@ -33,19 +33,28 @@ export const router = new createRouter({
         {
             path: '/news',
             name: 'news',
+            // HOC
             component: createListView('NewsView') // CreateListView.js 에서 선언한 render 함수 연결
+            // Mixin
+            // component: NewsView
         },
 
         {
             path: '/ask',
             name: 'ask',
-            component: createListView('AskView') // CreateListView.js 에서 선언한 render 함수 연결
+            // HOC
+            component: createListView('AskView')
+            // Mixin
+            // component: AskView
         },
 
         {
             path: '/jobs',
             name: 'jobs',
-            component: createListView('JobsView') // CreateListView.js 에서 선언한 render 함수 연결
+            // HOC
+            component: createListView('JobsView')
+            // Mixin
+            // component: JobsView
         },
 
         {
