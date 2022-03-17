@@ -26,7 +26,7 @@ export default {
     // *** HOC 로 구현했기때문에 더이상 필요 없음
     // // ES6 디스트럭처링 방법
     // FETCH_NEWS_LIST({ commit }) {
-    //     fetchNewsList()
+    //     return fetchNewsList()
     //         .then(({ data }) => {
     //             commit('SET_NEWS_LIST', data);
     //         })
@@ -36,7 +36,7 @@ export default {
     // },
     //
     // FETCH_ASK_LIST({ commit }) {
-    //     fetchAskList()
+    //     return fetchAskList()
     //         .then(({ data }) => {
     //             commit('SET_ASK_LIST', data);
     //         })
@@ -46,7 +46,7 @@ export default {
     // },
     //
     // FETCH_JOBS({ commit }) {
-    //     fetchJobsList()
+    //     return fetchJobsList()
     //         .then(({ data }) => {
     //             commit('SET_JOBS', data);
     //         })
@@ -57,7 +57,7 @@ export default {
     // *** HOC 로 구현했기때문에 더이상 필요 없음
 
     FETCH_USER({ commit }, name) { //name: UserView.vue 에서 전달받은 인자값
-        fetchUserInfo(name) // 인자값 기준으로 api 호출
+        return fetchUserInfo(name) // 인자값 기준으로 api 호출
             .then(({ data }) => { // 받은 결과값이 성공이면 mutations.js 로 넘김
                 commit('SET_USER', data);
             })
@@ -67,7 +67,7 @@ export default {
     },
 
     FETCH_ITEM({commit}, id) {
-        fetchItemDtl(id)
+        return fetchItemDtl(id)
             .then(({data}) => {
                 commit('SET_ITEM', data);
             })
@@ -78,7 +78,7 @@ export default {
 
     // 공통 리스트 조회 이벤트
     FETCH_LIST({ commit }, pageName) {
-        fetchList(pageName)
+        return fetchList(pageName)
             .then(({ data }) => {
                 commit('SET_LIST', data);
             })
