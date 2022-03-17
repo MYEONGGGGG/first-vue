@@ -10,7 +10,10 @@ import ListView from "@/views/ListView.vue";
 export default function createListView(name) {
     return {
         // 재사용할 인스턴스(컴포넌트) 옵션들이 들어갈 자리
-        name: name, // High Order Component의 이름
+
+        // High Order Component 의 이름
+        name,
+        // name: 'HOC Component',
 
         // NewsView, AskView, JobsView에서 실행한 이벤트를 HOC에 구성
         created() {

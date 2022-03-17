@@ -32,9 +32,12 @@ export const store = new createStore({
          * [] : 배열
          * {} : 객체
          * */
-        newsList: [],
-        askList: [],
-        jobs: [],
+        // *** HOC 로 구현했기때문에 더이상 필요 없음
+        // newsList: [],
+        // askList: [],
+        // jobs: [],
+        // *** HOC 로 구현했기때문에 더이상 필요 없음
+
         user: {},
         item: {},
         list: []
@@ -42,9 +45,12 @@ export const store = new createStore({
         // emitter: mitt() //컴포넌트에서 어디든 mitt()이 return 하는 emitter 에 접근가능하도록 state에 저장. //mitt 예제
     },
     getters: {
-        fetchedAsk(state) {
-            return state.askList;
-        },
+        // *** HOC 로 구현했기때문에 더이상 필요 없음
+        // fetchedAsk(state) {
+        //     return state.askList;
+        // },
+        // *** HOC 로 구현했기때문에 더이상 필요 없음
+
         fetchedItem(state) {
             return state.item;
         },

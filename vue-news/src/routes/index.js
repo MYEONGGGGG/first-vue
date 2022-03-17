@@ -6,9 +6,6 @@
  * 아래와 같은 방법을 이용해야 함.
  * */
 import { createWebHistory, createRouter } from 'vue-router';
-import NewsView from '@/views/NewsView.vue';
-import AskView from '@/views/AskView.vue';
-import JobsView from '@/views/JobsView.vue';
 import UserView from "@/views/UserView";
 import ItemView from "@/views/ItemView";
 import createListView from "@/views/CreateListView";
@@ -36,21 +33,18 @@ export const router = new createRouter({
         {
             path: '/news',
             name: 'news',
-            // component: NewsView
             component: createListView('NewsView') // CreateListView.js 에서 선언한 render 함수 연결
         },
 
         {
             path: '/ask',
             name: 'ask',
-            // component: AskView
             component: createListView('AskView') // CreateListView.js 에서 선언한 render 함수 연결
         },
 
         {
             path: '/jobs',
             name: 'jobs',
-            // component: JobsView
             component: createListView('JobsView') // CreateListView.js 에서 선언한 render 함수 연결
         },
 
