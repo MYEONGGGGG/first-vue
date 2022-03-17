@@ -18,5 +18,10 @@ export default {
 
     SET_ITEM(state, itemData) {
         state.item = itemData;
+    },
+
+    // 공통 리스트 데이터 설정 함수
+    SET_LIST(state, listData) {
+        state.list = listData;
     }
 }

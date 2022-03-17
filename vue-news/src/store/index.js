@@ -26,6 +26,8 @@ export const store = new createStore({
 
     // 내부 선언(vuex 구조)
     state: {
+        // 속성 추가
+
         /**
          * [] : 배열
          * {} : 객체
@@ -35,6 +37,7 @@ export const store = new createStore({
         jobs: [],
         user: {},
         item: {},
+        list: []
 
         // emitter: mitt() //컴포넌트에서 어디든 mitt()이 return 하는 emitter 에 접근가능하도록 state에 저장. //mitt 예제
     },
@@ -44,7 +47,10 @@ export const store = new createStore({
         },
         fetchedItem(state) {
             return state.item;
-        }
+        },
+        // fetchedList(state) {
+        //     return state.list;
+        // }
     },
     mutations,
     actions

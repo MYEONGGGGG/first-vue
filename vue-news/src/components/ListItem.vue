@@ -1,7 +1,7 @@
 <template>
   <div>
     <ul class="list">
-      <li v-for="item in listItems" class="post">
+      <li v-for="item in listItems" :key="item.id" class="post">
         <div class="points">
           {{ item.points || 0 }}
         </div>
@@ -41,6 +41,7 @@
 
 <script>
 export default {
+  // #1
   // 데이터 분기 처리
   // created() {
   //   const name = this.$route.path;
@@ -56,13 +57,21 @@ export default {
   // },
 
   computed: {
+    // #3
     listItems() {
-      const name = this.$route.path;
-
-      if (name === '/news') { return this.$store.state.newsList; }
-      else if (name === '/ask') { return this.$store.state.askList; }
-      else if (name === '/jobs') { return this.$store.state.jobs; }
+      return this.$store.state.list;
+      // return this.$store.getters.fetchedList;
     }
+
+    // #2: 공통 리스트 뷰 생성으로(ListView.vue) 뷰 명칭에 따른 데이터 분기처리가 필요 없어졌으며,
+    //     NewsView.vue, AskView.vue, JobsView.vue 에 관련된 로직과 파일은 더 이상 필요 없다.
+    // listItems() {
+    //   const name = this.$route.path;
+    //
+    //   if (name === '/news') { return this.$store.state.newsList; }
+    //   else if (name === '/ask') { return this.$store.state.askList; }
+    //   else if (name === '/jobs') { return this.$store.state.jobs; }
+    // }
   }
 }
 </script>

@@ -77,7 +77,12 @@ function fetchItemDtl(id) {
      * */
 }
 
+// 공통 리스트 API 함수
+function fetchList(pageName) {
+    return axios.get(`${config.baseUrl}${pageName}/1.json`);
+}
+
 
 export {
-    fetchNewsList, fetchAskList, fetchJobsList, fetchUserInfo, fetchItemDtl
+    fetchNewsList, fetchAskList, fetchJobsList, fetchUserInfo, fetchItemDtl, fetchList
 }

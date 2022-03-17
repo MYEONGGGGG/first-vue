@@ -11,8 +11,7 @@ import AskView from '@/views/AskView.vue';
 import JobsView from '@/views/JobsView.vue';
 import UserView from "@/views/UserView";
 import ItemView from "@/views/ItemView";
-
-// Vue.use(VueRouter);
+import createListView from "@/views/CreateListView";
 
 // 라우터 생성
 export const router = new createRouter({
@@ -36,17 +35,23 @@ export const router = new createRouter({
         },
         {
             path: '/news',
-            component: NewsView
+            name: 'news',
+            // component: NewsView
+            component: createListView('NewsView') // CreateListView.js 에서 선언한 render 함수 연결
         },
 
         {
             path: '/ask',
-            component: AskView
+            name: 'ask',
+            // component: AskView
+            component: createListView('AskView') // CreateListView.js 에서 선언한 render 함수 연결
         },
 
         {
             path: '/jobs',
-            component: JobsView
+            name: 'jobs',
+            // component: JobsView
+            component: createListView('JobsView') // CreateListView.js 에서 선언한 render 함수 연결
         },
 
         {

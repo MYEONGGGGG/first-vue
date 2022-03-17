@@ -44,7 +44,7 @@ app.config.globalProperties.axios = axios; // axios 등록
 //mitt 예제
 // // mitt 등록
 // const emitter = mitt();
-// app.config.globalProperties.emitter = emitter; // mitt 등록
+// app.config.globalProperties.emitter = emitter;
 
 // 불러온 아이콘 목록을 라이브러리에 담는다.
 library.add(

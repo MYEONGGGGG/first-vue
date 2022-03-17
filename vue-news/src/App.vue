@@ -7,12 +7,27 @@
 <!--    <button @mousedown="a">버튼 a</button>-->
 <!--    <button @mousedown="b">버튼 b</button>-->
 
-    <transition name="page">
-      <!-- index.js: url 에 해당하는 router view 를 불러온다. -->
-      <router-view></router-view>
-    </transition>
+    <!-- ** [Vue warn] **
+         vue-router.esm-bundler.js?6c02:72 [Vue Router warn]:
+         <router-view> can no longer be used directly inside <transition> or <keep-alive>.
+     -->
+    <!-- Vue2.x -->
+    <!--    <transition name="page">-->
+    <!--      &lt;!&ndash; index.js: url 에 해당하는 router view 를 불러온다. &ndash;&gt;-->
+    <!--      <router-view></router-view>-->
+    <!--    </transition>-->
 
-    <spinner :loading="true"></spinner>
+    <!-- Vue3.x -->
+    <router-view v-slot="{ Component }">
+      <transition name="page" mode="out-in">
+        <div>
+          <component :is="Component" />
+        </div>
+      </transition>
+    </router-view>
+    <!-- ** [Vue warn] ** -->
+
+    <spinner :loading="loadingStatus"></spinner>
   </div>
 </template>
 
@@ -45,18 +60,23 @@ export default {
   },
 
   created() {
-    this.emitter.on('start:spinner', ()=> this.loadingStatus );
+    // 이벤트 버스 실행
+    this.emitter.on('start:spinner', () => this.startSpinner() );
+    this.emitter.on('end:spinner', () => this.endSpinner() );
+  },
+
+  // beforeDestroy() {
+  //   this.emitter.off('start:spinner', this.startSpinner);
+  //   this.emitter.off('end:spinner', this.endSpinner);
+  // },
+
+  // 컴포넌트가 제거되기 전 실행되는 라이프사이클
+  onUnmounted() {
+    // 이벤트 버스 해제(컴포넌트 역할이 끝나고 이벤트가 쌓이지 않게 off 처리)
+    this.emitter.off('start:spinner', this.startSpinner);
+    this.emitter.off('end:spinner', this.endSpinner);
   }
 
-  // methods: {
-  //   onReceive(value) {
-  //     console.log(value);
-  //   }
-  // },
-  //
-  // created() {
-  //   this.emitter.on('test', this.onReceive);
-  // }
 
   //mitt 예제
   // setup() {
