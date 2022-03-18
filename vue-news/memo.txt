@@ -101,6 +101,7 @@
   cli 2.x ==> vue init 프로젝트 명
   cli 3.x ==> vue create 프로젝트 명
   * 3 버전 부터는 ESLint, webpack 등 기타 플러그인이 같이 추가 된다.
+  * 프로젝트 생성 시, Vue CLI 버전을 확인하면서 프로젝트의 Vue 버전을 고를 수 있다.
 
 - 웹팩 설정 파일
   cli 2.x ==> 노출 O
