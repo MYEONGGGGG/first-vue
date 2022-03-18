@@ -4,17 +4,17 @@ export default {
      * */
 
     // *** HOC 로 구현했기때문에 더이상 필요 없음
-    // SET_NEWS_LIST(state, newsData) {
-    //     state.newsList = newsData; // actions 에서 넘겨준 데이터를 state에 담는다.
-    // },
-    //
-    // SET_ASK_LIST(state, askData) {
-    //     state.askList = askData;
-    // },
-    //
-    // SET_JOBS(state, jobData) {
-    //     state.jobs = jobData;
-    // },
+    SET_NEWS_LIST(state, newsData) {
+        state.newsList = newsData; // actions 에서 넘겨준 데이터를 state에 담는다.
+    },
+
+    SET_ASK_LIST(state, askData) {
+        state.askList = askData;
+    },
+
+    SET_JOBS(state, jobData) {
+        state.jobs = jobData;
+    },
     // *** HOC 로 구현했기때문에 더이상 필요 없음
 
     SET_USER(state, userData) {

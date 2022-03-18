@@ -364,8 +364,30 @@ errorCaptured -> ErrorCaptured
 
 =======================
 [ 데이터 호출 시점 ]
-1. 라우더 네비게이션 가드
-   - 특정 URL로 접근하기 전의 동작을 정의하는 속성(함수)
+1. 라우터 네비게이션 가드(vue-router Navigation Guard)
+   : 특정 URL로 접근하기 전의 동작을 정의하는 속성(함수)
 
-2. 컴포넌트 라이프 사이클 훅
-   - created: 컴포넌트가 생성되자마자 호출되는 로직
+   - 전역가드(beforeEach)
+     모든 라우터 객체에 가드를 적용합니다.
+     어떤 라우트가 발생했는지 알기 위해서는 아래 세가지 인자를 전달받아 확인한다.
+     . to: to 에 해당하는 라우트 객체로 다음에 이동
+     . from: 현재 라우터로 오기 이전의 라우트
+     . next: 훅을 해결하기 위해 호출된다. 동작 방식은 next에 전달하는 인자에 따라 달라진다.
+       *next() 함수의 경우 호출되지 않으면 훅이 절대 불러지지 않으므로 반드시 가드 내에서 호출해야한다.
+
+   - 라우트 별 가드(beforeEnter)
+     라우트 객체에 직접 정의하여 해당 라우트가 발생하기 이전에 원하는 로직을 처리할 수 있다.
+
+   - 컴포넌트 내부 가드(beforeRouteEnter, beforeRouteUpdate, beforeRouteLeave)
+     컴포넌트 내부에서 네이게이션 가드를 설정할 수 있다.
+
+2. 라이프사이클 훅(lifecycle hooks)
+   : 라이프사이클이란 Vue 인스턴스나 컴포넌트가 생성되고 소멸되기까지의 단계를 말하며 각 단계에서 실행되는 함수들을 라이프사이클 훅이라한다.
+
+     1) Creation : 컴포넌트 초기화 단계
+     2) Mounting : DOM 삽입 단계
+     3) Updating : Diff 및 Re-rendering 단계
+     4) Destruction : 해체 단계
+     5) 그 외 hooks
+
+     *참고: https://velog.io/@yeyo0x0/Vue.js-%EB%9D%BC%EC%9D%B4%ED%94%84%EC%82%AC%EC%9D%B4%ED%81%B4-%ED%9B%85

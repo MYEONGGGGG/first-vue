@@ -25,35 +25,35 @@ export default {
 
     // *** HOC 로 구현했기때문에 더이상 필요 없음
     // // ES6 디스트럭처링 방법
-    // FETCH_NEWS_LIST({ commit }) {
-    //     return fetchNewsList()
-    //         .then(({ data }) => {
-    //             commit('SET_NEWS_LIST', data);
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //         });
-    // },
-    //
-    // FETCH_ASK_LIST({ commit }) {
-    //     return fetchAskList()
-    //         .then(({ data }) => {
-    //             commit('SET_ASK_LIST', data);
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //         });
-    // },
-    //
-    // FETCH_JOBS({ commit }) {
-    //     return fetchJobsList()
-    //         .then(({ data }) => {
-    //             commit('SET_JOBS', data);
-    //         })
-    //         .catch(error => {
-    //             console.log(error);
-    //         });
-    // },
+    FETCH_NEWS_LIST({ commit }) {
+        return fetchNewsList()
+            .then(({ data }) => {
+                commit('SET_NEWS_LIST', data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    },
+
+    FETCH_ASK_LIST({ commit }) {
+        return fetchAskList()
+            .then(({ data }) => {
+                commit('SET_ASK_LIST', data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    },
+
+    FETCH_JOBS({ commit }) {
+        return fetchJobsList()
+            .then(({ data }) => {
+                commit('SET_JOBS', data);
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    },
     // *** HOC 로 구현했기때문에 더이상 필요 없음
 
     FETCH_USER({ commit }, name) { //name: UserView.vue 에서 전달받은 인자값
