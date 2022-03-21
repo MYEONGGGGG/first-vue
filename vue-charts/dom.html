@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app" ref="app">hello</div>
+
+  <script>
+      // 자바스크립트에서 DOM을 접근하는 방법(id 이용)
+      var divElement= document.getElementById('app');
+      var divElement= document.querySelector('#app');
+
+      // jQuery에서 DOM을 접근하는 방법(id 이용)
+      var divElement= $('app');
+
+      // Vue에서 DOM을 접근하는 방법(ref 이용)
+      var divElement = this.$refs.app;
+  </script>
+</body>
+</html>
