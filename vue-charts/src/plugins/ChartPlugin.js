@@ -7,13 +7,16 @@ import { Chart, registerables } from 'chart.js';
 Chart.register(...registerables);
 
 export default {
+    /**
+     * 차트를 컴포넌트화 -> 컴포넌트를 플로그인화 */
+
     install(app) {
         // '$_' : 모든 컴포넌트에서 공용으로 사용할 수 있게 등록
 
-        // #2 Vue3 방법
+        // #Vue3 방법
         app.config.globalProperties.$_Chart = Chart;
 
-        // #1 Vue2 방법
+        // #Vue2 방법
         // app.prototype.$_Chart = Chart;
     }
 }
