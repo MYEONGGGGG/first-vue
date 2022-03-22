@@ -1,26 +1,30 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <fetch-data url="https://jsonplaceholder.typicode.com/users/1"> <!-- url 이라는 props에 내려준다. -->
+      <!-- ... -->
+      <template v-slot="{ response, loading }">
+        <div v-if="!loading">
+          <p>{{ response.name }}</p>
+          <p>{{ response.email }}</p>
+        </div>
+        <div v-if="loading">
+          Loading..
+        </div>
+      </template>
+    </fetch-data>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import FetchData from "@/components/FetchData";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    FetchData
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

@@ -1,26 +1,27 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    <ul>
+      <item-view v-for="item in items" :key="item.id">
+        {{ item }}
+      </item-view>
+    </ul>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ItemView from "@/ItemView";
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
+    ItemView,
+  },
+  data() {
+    return {
+      items: ['아이템 1', '아이템 2', '아이템 3', '아이템 4', '아이템 5']
+    }
   }
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>

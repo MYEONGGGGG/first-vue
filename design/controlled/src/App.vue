@@ -1,26 +1,23 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+<!--  <check-box v-model="checked"></check-box>--> <!-- vue2의 방법 -->
+  <check-box v-model:value="checked"></check-box> <!-- vue3의 방법 -->
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import CheckBox from "@/components/CheckBox";
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    CheckBox,
+  },
+  data() {
+    return {
+      checked: false,
+    }
+  },
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
 </style>
