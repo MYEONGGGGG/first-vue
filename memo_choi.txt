@@ -484,3 +484,8 @@ errorCaptured -> ErrorCaptured
   2) Slot: 마크업 확장이 가능한 컴포넌트
   3) Controlled: 결합력이 높은 컴포넌트
   4) Renderless: 데이터 처리 컴포넌트
+
+=======================
+[ swagger ]
+  'Vue.js 끝장내기'에서 이용할 API 문서
+  (*URL: https://www.swagger.io/)
