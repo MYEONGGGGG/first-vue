@@ -1,16 +1,22 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <nav-menu></nav-menu>
+  <router-view :blogData="blogData"></router-view>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import blog from "@/assets/blog";
+import NavMenu from "@/components/NavMenu";
 
 export default {
   name: 'App',
+  data() {
+    return {
+      blogData: blog,
+    }
+  },
   components: {
-    HelloWorld
-  }
+    NavMenu,
+  },
 }
 </script>
 
@@ -21,6 +27,5 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
 }
 </style>
