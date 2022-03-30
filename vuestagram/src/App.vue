@@ -1,21 +1,27 @@
 <template>
   <div class="header">
     <ul class="header-button-left">
-      <li>Cancel</li>
+      <li @click="this.step--">Cancel</li>
     </ul>
     <ul class="header-button-right">
-      <li>Next</li>
+      <li @click="this.step++" v-if="step==2">Next</li>
+      <li @click="publish" v-if="step==1">등록</li>
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
 
-  <ContainerView :inData="inData" />
+  <ContainerView
+      :inData="inData"
+      :step="step"
+      :imgUrl="imgUrl"
+      @write="content = $event"
+  />
 
   <button @click="more(cnt)" :disabled="cnt>=2">더보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
-      <input type="file" id="file" class="inputfile" />
+      <input @change="upload" accept="image/*" type="file" id="file" class="inputfile" />
       <label for="file" class="input-plus">+</label>
     </ul>
   </div>
@@ -32,6 +38,9 @@ export default {
     return {
       inData: instagram,
       cnt: 0,
+      step: 0,
+      imgUrl: '',
+      content: '',
     }
   },
   components: {
@@ -57,7 +66,34 @@ export default {
         this.cnt++;
       }
     },
+
+    upload(e) {
+      let file = e.target.files;
+      console.log(file[0]);
+
+      let url = URL.createObjectURL(file[0]);
+      console.log(url);
+
+      this.imgUrl = url;
+      this.step = 1;
+    },
+
+    publish() {
+      var thisData = {
+        name: "Kim Hyun",
+        userImage: "https://placeimg.com/100/100/arch",
+        postImage: this.imgUrl,
+        likes: 44,
+        date: "May 9",
+        liked: false,
+        content: "길 지나가다가 찍었음",
+        filter: "perpetua"
+      };
+      this.inData.unshift(thisData);
+      this.step = 0;
+    },
   },
+
 }
 </script>
 
