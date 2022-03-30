@@ -1,11 +1,11 @@
 <template>
   <div class="header">
     <ul class="header-button-left">
-      <li @click="this.step--">Cancel</li>
+      <li @click="this.step--" v-if="step>0">Cancel</li>
     </ul>
     <ul class="header-button-right">
-      <li @click="this.step++" v-if="step==2">Next</li>
-      <li @click="publish" v-if="step==1">등록</li>
+      <li @click="this.step++" v-if="step==1">Next</li>
+      <li @click="publish" v-if="step==2">등록</li>
     </ul>
     <img src="./assets/logo.png" class="logo" />
   </div>
@@ -17,7 +17,7 @@
       @write="content = $event"
   />
 
-  <button @click="more(cnt)" :disabled="cnt>=2">더보기</button>
+  <button @click="more(cnt)" :disabled="cnt>=2" v-if="step==0">더보기</button>
 
   <div class="footer">
     <ul class="footer-button-plus">
@@ -86,7 +86,7 @@ export default {
         likes: 44,
         date: "May 9",
         liked: false,
-        content: "길 지나가다가 찍었음",
+        content: this.content,
         filter: "perpetua"
       };
       this.inData.unshift(thisData);
