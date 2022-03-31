@@ -14,8 +14,10 @@
       :inData="inData"
       :step="step"
       :imgUrl="imgUrl"
-      @write="content = $event"
+      :filterName="filterName"
+      v-on:write="content=$event"
   />
+  <!-- @write="content = $event" -->
 
   <button @click="more(cnt)" :disabled="cnt>=2" v-if="step==0">더보기</button>
 
@@ -41,7 +43,15 @@ export default {
       step: 0,
       imgUrl: '',
       content: '',
+      filterName: '',
+      likes: 0,
     }
+  },
+  mounted() {
+    this.emitter.on('setFilter', event => { // 받은 이벤트 수신
+      this.filterName = event;
+      console.log('filter name: ' + this.filterName);
+    });
   },
   components: {
     ContainerView,
@@ -80,14 +90,14 @@ export default {
 
     publish() {
       var thisData = {
-        name: "Kim Hyun",
+        name: "Choi Myeongeun",
         userImage: "https://placeimg.com/100/100/arch",
         postImage: this.imgUrl,
-        likes: 44,
+        likes: this.likes,
         date: "May 9",
         liked: false,
         content: this.content,
-        filter: "perpetua"
+        filter: this.filterName,
       };
       this.inData.unshift(thisData);
       this.step = 0;

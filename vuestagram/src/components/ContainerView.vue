@@ -1,24 +1,22 @@
 <template>
   <div>
     <div v-if="step==0">
-      <post-view v-for="(data, i) in inData" :key="i" :inData="inData[i]"/>
+      <post-view :filterName="filterName" v-for="(data, i) in inData" :key="i" :inData="inData[i]"/>
     </div>
 
     <!-- 필터선택페이지 -->
     <div v-if="step==1">
-      <div class="upload-image" :style="{ backgroundImage: `url(${imgUrl})` }"></div>
+      <div class="upload-image" :style="{ backgroundImage: `url(${imgUrl})`}"></div>
       <div class="filters">
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
-        <div class="filter-1"></div>
+        <filter-box :imgUrl="imgUrl" :filter="filter" :key="filter" v-for="filter in filterList">
+          <span style="color: #2c3e50">{{ filter }}</span>
+        </filter-box>
       </div>
     </div>
 
     <!-- 글작성페이지 -->
     <div v-if="step==2">
-      <div class="upload-image" :style="{ backgroundImage: `url(${imgUrl})` }"></div>
+      <div class="upload-image" :style="{ backgroundImage: `url(${imgUrl})`}"></div>
       <div class="write">
         <textarea @input="$emit('write', $event.target.value)" class="write-box">내용을 입력하세요.</textarea>
       </div>
@@ -28,14 +26,24 @@
 
 <script>
 import PostView from "@/components/PostView";
+import FilterBox from "@/components/FilterBox";
+import filter from "@/assets/filter";
+
 export default {
   name: "ContainerView",
+  data() {
+    return {
+      filterList: filter,
+    }
+  },
   props: {
     inData: Array,
     step: Number,
     imgUrl: String,
+    filterName: String,
   },
   components: {
+    FilterBox,
     PostView,
   },
 }

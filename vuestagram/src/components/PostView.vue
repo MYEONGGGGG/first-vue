@@ -8,9 +8,13 @@
       <div class="profile" :style="{ backgroundImage: `url(${inData.userImage})` }"></div>
       <span class="profile-name">{{ inData.name }}</span>
     </div>
-    <div class="post-body" :style="{ backgroundImage: `url(${inData.postImage})` }"></div>
+    <div class="post-body" :class="filterName" :style="{ backgroundImage: `url(${inData.postImage})` }"></div>
     <div class="post-content">
-      <p>{{ inData.likes }}</p>
+      <p>
+        <font-awesome-icon
+            @click="$store.commit('updateLikes')"
+            :icon="['far', 'thumbs-up']" size="lg"/> {{ $store.state.likes }} Likes
+      </p>
       <p><strong>{{ inData.name }}</strong> {{ inData.content }}</p>
       <p class="date">{{ inData.date }}</p>
     </div>
@@ -22,6 +26,7 @@ export default {
   name: "PostView",
   props: {
     inData: Object,
+    filterName: String,
   },
 }
 </script>

@@ -92,6 +92,24 @@
    그렇기 때문에 computed property로 표현할 수 있는 것을 함수를 사용할 필요는 없습니다.
 
 =======================
+[ 컴포넌트 통신 ]
+(1) 부모에서 자식으로 데이터를 전달하기 위해서는 props를 사용한다.
+(2) 자식이 부모에게 데이터를 전달하기 위해서는 event를 발생시킨다.
+
+부모(상위) 컴포넌트 > 'Props를 통하여 데이터 전달' > 자식(하위) 컴포넌트
+부모(상위) 컴포넌트 < 'Emit Events를 통하여 이벤트 전달' < 자식(하위) 컴포넌트
+
+<props>
+<div v-bind:하위 컴호넌트 프롭스 속성 이름="상위 컴포넌트 데이터 이름"/>
+
+<Event-emit>
+// 하위 컴포넌트
+this.$emit('이벤트 명', '데이터');
+
+// 상위 컴포넌트
+@write="content = $event"
+
+=======================
 [ cli 2.x vs 3.x ]
 2. 중급강의까지는 cli 2.x
 3. 완벽가이드 부터는 cli 3.x
@@ -238,13 +256,15 @@ https://releases.jquery.com/
    * 적용 관련 참고URL: https://kyounghwan01.github.io/blog/Vue/vue3/composition-api-vuex/#vuex-%E1%84%89%E1%85%A6%E1%84%90%E1%85%B5%E1%86%BC-%E1%84%86%E1%85%B5%E1%86%BE-store-module-1%E1%84%80%E1%85%A2%E1%84%85%E1%85%A9-%E1%84%89%E1%85%B5%E1%86%AF%E1%84%92%E1%85%A2%E1%86%BC
 
  - 설치 방법
+  npm install mitt
+  또는
   npm install vuex@next --save
 
 =======================
 [ Mitt ]
  : 형제나 부모의 부모등 (연관없는 컴포넌트 포함) 여러 방향으로 데이터 전달 하는 방법
    커스텀 이벤트를 만들어 송출, 수신할수있게해주는 라이브러리
-   *프로젝트가 거대해질 경우 Vuex를 쓰는게 유비보수에 좋다.
+   *프로젝트가 거대해질 경우 Vuex를 쓰는게 유지보수에 좋다. (=많이 사용하지 않는 것이 관리하기 좋다.)
    *설치: npm i mitt --save
 
 =======================
@@ -257,11 +277,18 @@ https://releases.jquery.com/
 
  2. 라이브러리 설치
  : npm 을 이용하여 라이브러리 추가(핵심 패키지, 아이콘 콘텐츠 설치)
- $ npm i --save @fortawesome/vue-fontawesome@prerelease
+
+ // Add SVG Core(Free)
  $ npm i --save @fortawesome/fontawesome-svg-core
+
+ // Add Icon Packages(Free)
  $ npm i --save @fortawesome/free-solid-svg-icons
  $ npm i --save @fortawesome/free-regular-svg-icons
  $ npm i --save @fortawesome/free-brands-svg-icons
+
+ // Add the Vue Component(Using Vue3.x)
+ $ npm i --save @fortawesome/vue-fontawesome@prerelease
+
  * main.js 에서 아이콘을 불러와야한다.
  * 참고 URL: https://fontawesome.com/docs/web/style/size
 
