@@ -21,6 +21,13 @@
 
   <button @click="more(cnt)" :disabled="cnt>=2" v-if="step==0">더보기</button>
 
+  <!-- computed > mapState 실습 -->
+  <p> {{ test1 }} </p>
+  <p> {{ test2 }} </p>
+
+  <!-- methods > mapMutations 실습 -->
+  <button @click="updateLikes()">실습</button>
+
   <div class="footer">
     <ul class="footer-button-plus">
       <input @change="upload" accept="image/*" type="file" id="file" class="inputfile" />
@@ -33,6 +40,7 @@
 import ContainerView from "@/components/ContainerView";
 import instagram from "@/assets/instagram";
 import axios from "axios";
+import { mapState, mapMutations } from "vuex";
 
 export default {
   name: 'App',
@@ -45,6 +53,7 @@ export default {
       content: '',
       filterName: '',
       likes: 0,
+      count: 0,
     }
   },
   mounted() {
@@ -56,11 +65,26 @@ export default {
   components: {
     ContainerView,
   },
+
+  // computed : computed 함수는 사용해도 재실행되지 않음.(처음 실행하고 값을 간직함, 변경이 필요할 때만 실행, 계산결과 저장용 함수)
+  computed: {
+    name() {
+      return this.$store.state.name;
+    },
+
+    // mapState: Vuex의 state를 한번에 꺼내쓸 수 있다.
+    // ...mapState(['name', 'likes']),
+    ...mapState({ test1: 'name', test2: 'likes' }),
+  },
+
+  // methods : methods 함수는 사용할 때마다 실행됨.
   methods: {
     /**
      * GET 요청: 데이터 서버에서 가져올 때
      * POST 요청: 서버로 데이터를 보낼 때
      * */
+    ...mapMutations(['updateLikes', 'updateMore']),
+
     more(cnt) {
       const temp = parseInt(cnt);
 
