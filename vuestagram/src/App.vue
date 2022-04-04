@@ -48,7 +48,7 @@ export default {
     return {
       inData: instagram,
       cnt: 0,
-      step: 0,
+      step: 3,
       imgUrl: '',
       content: '',
       filterName: '',

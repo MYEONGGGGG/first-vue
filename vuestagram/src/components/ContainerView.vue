@@ -21,6 +21,12 @@
         <textarea @input="$emit('write', $event.target.value)" class="write-box">내용을 입력하세요.</textarea>
       </div>
     </div>
+
+    <!-- MyPage -->
+    <div v-if="step==3">
+<!--      <my-page :one="1"></my-page>-->
+      <my-page></my-page>
+    </div>
   </div>
 </template>
 
@@ -28,6 +34,7 @@
 import PostView from "@/components/PostView";
 import FilterBox from "@/components/FilterBox";
 import filter from "@/assets/filter";
+import MyPage from "@/components/MyPage";
 
 export default {
   name: "ContainerView",
@@ -45,6 +52,7 @@ export default {
   components: {
     FilterBox,
     PostView,
+    MyPage,
   },
 }
 </script>
